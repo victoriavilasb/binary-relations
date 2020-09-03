@@ -2,9 +2,9 @@
 #include<stdlib.h>
 
 int 
-indexOf(int number, int elements[], int elements_number)
+index_of(int number, int elements[], int size)
 {
-    for (int i = 0; i < elements_number; i++)
+    for (int i = 0; i < size; i++)
     {
         if (elements[i] == number) {
             return i;
@@ -23,17 +23,39 @@ zeros(int size, int matrix[size][size])
 }
 
 int
+is_reflective(int size, int matrix[size][size])
+{
+    for (int i = 0; i < size; i++) {
+        if (!matrix[i][i]) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+void
+complete_reflective_relation(int size, int matrix[size][size], int elements[size])
+{
+    for (int i = 0; i < size; i++) {
+        if (!matrix[i][i]) {
+            printf("(%i,%i); ", elements[i], elements[i]);
+        }
+    }
+    printf("\n");
+}
+
+int
 main(void) 
 {
-    int elements_number, elem, index_line, index_column, line_number, column_number;
+    int size, elem, index_line, index_column, line_number, column_number;
 
-    scanf("%i", &elements_number);
-    int elements[elements_number];
+    scanf("%i", &size);
+    int elements[size];
 
-    int relation_matrix[elements_number][elements_number];
-    zeros(elements_number, relation_matrix);
+    int relation_matrix[size][size];
+    zeros(size, relation_matrix);
 
-    for (int i = 0; i < elements_number; i++) {
+    for (int i = 0; i < size; i++) {
         scanf("%i", &elem);
         elements[i] = elem;
     }
@@ -43,8 +65,8 @@ main(void)
         if (line_number == EOF) {
             break;
         }
-        index_line = indexOf(line_number, elements, elements_number);
-        index_column = indexOf(column_number, elements, elements_number);
+        index_line = index_of(line_number, elements, size);
+        index_column = index_of(column_number, elements, size);
         if (index_line == -1 || index_column == -1){
             printf("ERROR: Number does not exists in the set of elements");
             exit(1);
@@ -53,10 +75,12 @@ main(void)
         relation_matrix[index_line][index_column] = 1;
     }
 
-    for (int i = 0; i < elements_number; i++) {
-        for (int j = 0; j < elements_number; j++) {
-            printf("%i ", relation_matrix[i][j]);
-        }
-        printf("\n");
+    printf("Propriedades\n");
+    printf("1. Reflexiva: ");
+    if (is_reflective(size, relation_matrix)) {
+        printf("V\n");
+    } else {
+        printf("F\n");
+        complete_reflective_relation(size, relation_matrix, elements);
     }
 }
