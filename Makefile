@@ -1,7 +1,7 @@
 PP = gcc
 EXEC = ./binary_elements
 
-binary_elements: src/main.c
+binary_elements: src/main.c src/relations/relations.c
 	${PP} src/main.c -o binary_elements
 
 playground: src/cmd/playground.c
