@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include "./relations/relations.c"
 
 int 
 index_of(int number, int elements[], int size)
@@ -20,17 +21,6 @@ zeros(int size, int matrix[size][size])
         for (int j = 0; j < size; j++)
             matrix[i][j] = 0;
     
-}
-
-int
-is_reflective(int size, int matrix[size][size])
-{
-    for (int i = 0; i < size; i++) {
-        if (!matrix[i][i]) {
-            return 0;
-        }
-    }
-    return 1;
 }
 
 void
