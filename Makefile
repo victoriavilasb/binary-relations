@@ -9,3 +9,6 @@ playground: src/cmd/playground.c
 
 clean:
 	rm -rf *o binary_elements
+
+run:
+	./binary_elements

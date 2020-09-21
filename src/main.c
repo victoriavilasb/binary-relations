@@ -37,9 +37,25 @@ complete_reflective_relation(int size, int matrix[size][size], int elements[size
     printf("\n");
 }
 
-// complete_unreflective_relation is a function that walks through the matrix and print the tuples that makes the relation not unreflective.
+
+// complete_simetric_relation is a function that walks through the matrix and print the tuples that are needed in order to get a simetric relation
 void
-complete_unreflective_relation(int size, int matrix[size][size], int elements[size])
+complete_simetric_relation(int size, int matrix[size][size], int elements[size])
+{
+    int i, j;
+    for (i = 0; i < size; i++) {
+        for (j = 0; j < size; j++) {
+            if (matrix[i][j] && !matrix[j][i]) {
+                printf("(%i,%i); ", elements[j], elements[i]);
+            }
+        }
+    }
+    printf("\n");
+}
+
+// find_unreflective_reason is a function that walks through the matrix and print the tuples that makes the relation not unreflective.
+void
+find_unreflective_reason(int size, int matrix[size][size], int elements[size])
 {
     for (int i = 0; i < size; i++) {
         if (matrix[i][i]) {
@@ -85,14 +101,21 @@ main(void)
     if (is_reflective(size, relation_matrix)) {
         printf("V\n");
     } else {
-        printf("F\n");
+        printf("F\n   ");
         complete_reflective_relation(size, relation_matrix, elements);
     }
     printf("2. Irreflexiva: ");
     if (is_unreflective(size, relation_matrix)) {
         printf("V\n");
     } else {
-        printf("F\n");
-        complete_unreflective_relation(size, relation_matrix, elements);
+        printf("F\n   ");
+        find_unreflective_reason(size, relation_matrix, elements);
+    }
+    printf("3. Simétrica: ");
+    if (is_simetric(size, relation_matrix)) {
+        printf("V\n");
+    } else {
+        printf("F\n   ");
+        complete_simetric_relation(size, relation_matrix, elements);
     }
 }
