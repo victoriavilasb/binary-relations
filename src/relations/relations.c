@@ -27,7 +27,6 @@ is_simetric(int size, int matrix[size][size])
     for (i = 0; i < size; i++) {
         for (j = 0; j < size; j++) {
             if (!(matrix[i][j] == matrix[j][i])) {
-                printf("%i %i", i, j);
                 return 0;
             }
         }
@@ -35,7 +34,8 @@ is_simetric(int size, int matrix[size][size])
     return 1;
 }
 
-int is_antisimetric(int size, int matrix[size][size])
+int
+is_antisimetric(int size, int matrix[size][size])
 {
     int i, j;
     for (i = 0; i < size; i++) {
@@ -46,4 +46,13 @@ int is_antisimetric(int size, int matrix[size][size])
         }
     }
     return 1;
+}
+
+int
+is_unsimetric(int size, int matrix[size][size])
+{
+    if (is_antisimetric(size, matrix) && is_unreflective(size, matrix)) {
+        return 1;
+    }
+    return 0;
 }

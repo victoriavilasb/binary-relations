@@ -37,7 +37,6 @@ complete_reflective_relation(int size, int matrix[size][size], int elements[size
     printf("\n");
 }
 
-
 // complete_simetric_relation is a function that walks through the matrix and print the tuples that are needed in order to get a simetric relation
 void
 complete_simetric_relation(int size, int matrix[size][size], int elements[size])
@@ -138,5 +137,12 @@ main(void)
     } else {
         printf("F\n   ");
         find_antisimetric_reason(size, relation_matrix, elements);
+    }
+    printf("3. Assimétrica: ");
+    if (is_unsimetric(size, relation_matrix)) {
+        printf("V\n");
+    } 
+    else {
+        printf("F\n");
     }
 }
