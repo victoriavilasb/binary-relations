@@ -131,15 +131,22 @@ main(void)
         printf("F\n   ");
         complete_simetric_relation(size, relation_matrix, elements);
     }
-    printf("3. Anti-simétrica: ");
+    printf("4. Anti-simétrica: ");
     if (is_antisimetric(size, relation_matrix)) {
         printf("V\n");
     } else {
         printf("F\n   ");
         find_antisimetric_reason(size, relation_matrix, elements);
     }
-    printf("3. Assimétrica: ");
+    printf("5. Assimétrica: ");
     if (is_unsimetric(size, relation_matrix)) {
+        printf("V\n");
+    } 
+    else {
+        printf("F\n");
+    }
+    printf("6. Transitiva: ");
+    if (is_transictive(size, relation_matrix)) {
         printf("V\n");
     } 
     else {
