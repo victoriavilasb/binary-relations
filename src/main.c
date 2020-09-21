@@ -65,6 +65,20 @@ find_unreflective_reason(int size, int matrix[size][size], int elements[size])
     printf("\n");
 }
 
+void
+find_antisimetric_reason(int size, int matrix[size][size], int elements[size])
+{
+    int i, j;
+    for (i = 0; i < size; i++) {
+        for (j = i; j < size; j++) {
+            if (matrix[i][j] && (matrix[i][j] == matrix[j][i]) && i != j) {
+                printf("(%i,%i) e (%i,%i); ", elements[i], elements[j], elements[j], elements[i]);
+            }
+        }
+    }
+    printf("\n");
+}
+
 int
 main(void) 
 {
@@ -117,5 +131,12 @@ main(void)
     } else {
         printf("F\n   ");
         complete_simetric_relation(size, relation_matrix, elements);
+    }
+    printf("3. Anti-simétrica: ");
+    if (is_antisimetric(size, relation_matrix)) {
+        printf("V\n");
+    } else {
+        printf("F\n   ");
+        find_antisimetric_reason(size, relation_matrix, elements);
     }
 }
