@@ -23,11 +23,23 @@ zeros(int size, int matrix[size][size])
     
 }
 
+// complete_reflective_relation is a function that walks through the matrix and prints the tuples needed in order to have a reflective relation
 void
 complete_reflective_relation(int size, int matrix[size][size], int elements[size])
 {
     for (int i = 0; i < size; i++) {
         if (!matrix[i][i]) {
+            printf("(%i,%i); ", elements[i], elements[i]);
+        }
+    }
+    printf("\n");
+}
+
+void
+complete_unreflective_relation(int size, int matrix[size][size], int elements[size])
+{
+    for (int i = 0; i < size; i++) {
+        if (matrix[i][i]) {
             printf("(%i,%i); ", elements[i], elements[i]);
         }
     }
@@ -72,5 +84,12 @@ main(void)
     } else {
         printf("F\n");
         complete_reflective_relation(size, relation_matrix, elements);
+    }
+    printf("1. Reflexiva: ");
+    if (is_unreflective(size, relation_matrix)) {
+        printf("V\n");
+    } else {
+        printf("F\n");
+        complete_unreflective_relation(size, relation_matrix, elements);
     }
 }
