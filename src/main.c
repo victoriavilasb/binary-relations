@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include "./relations/relations.c"
 
+// index_of is a function that finds index of a element in a array
 int 
 index_of(int number, int elements[], int size)
 {
@@ -14,6 +15,7 @@ index_of(int number, int elements[], int size)
     return -1;
 }
 
+// zeros is a function that put zeros in every position in a matrix
 void
 zeros(int size, int matrix[size][size])
 {
@@ -23,7 +25,7 @@ zeros(int size, int matrix[size][size])
     
 }
 
-// complete_reflective_relation is a function that walks through the matrix and prints the tuples needed in order to have a reflective relation
+// complete_reflective_relation is a function that walks through the matrix and prints the tuples needed in order to have a reflective relation.
 void
 complete_reflective_relation(int size, int matrix[size][size], int elements[size])
 {
@@ -35,6 +37,7 @@ complete_reflective_relation(int size, int matrix[size][size], int elements[size
     printf("\n");
 }
 
+// complete_unreflective_relation is a function that walks through the matrix and print the tuples that makes the relation not unreflective.
 void
 complete_unreflective_relation(int size, int matrix[size][size], int elements[size])
 {
@@ -85,7 +88,7 @@ main(void)
         printf("F\n");
         complete_reflective_relation(size, relation_matrix, elements);
     }
-    printf("1. Reflexiva: ");
+    printf("2. Irreflexiva: ");
     if (is_unreflective(size, relation_matrix)) {
         printf("V\n");
     } else {
