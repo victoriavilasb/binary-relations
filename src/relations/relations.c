@@ -63,16 +63,20 @@ is_transitive(int size, int matrix[size][size])
     int i, j, w;
     for (i = 0; i < size; i++) {
         for (j = i; j < size; j++) {
-            if (matrix[i][j] && !matrix[i][i]) {
-                return 0;
-            }
-
             if (matrix[i][j]) {
                 for (w = j; w < size; w++) {
                     if (matrix[j][w] && !matrix[i][w]) {
                         return 0;
                     }
+
+                    if (matrix[w][j] && !matrix[w][i]) {
+                        return 0;
+                    }
                 }
+            }
+
+            if (!matrix[i][i]) {
+                return 0;
             }
         }
     }

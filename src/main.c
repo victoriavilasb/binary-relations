@@ -83,15 +83,16 @@ find_transitive(int size, int matrix[size][size], int elements[size])
 {
     int i, j, w;
     for (i = 0; i < size; i++) {
-        for (j = i; j < size; j++) {
+        for (j = 0; j < size; j++) {
             if (matrix[i][j]) {
-                if (!matrix[i][i]) {
-                    printf("(%i,%i); ", elements[i], elements[i]);
-                }
-                for (w = j; w < size; w++) {
+                for (w = 0; w < size; w++) {
                     if (matrix[j][w] && !matrix[i][w]) {
                         printf("(%i,%i); ", elements[i], elements[w]);
                     }
+                }
+                if (!matrix[i][i]) {
+                    printf("(%i,%i); ", elements[i], elements[i]);
+                    break;
                 }
             }
         }
@@ -104,15 +105,19 @@ print_transitive_closure(int size, int matrix[size][size], int elements[size])
 {
     int i, j, w;
     for (i = 0; i < size; i++) {
-        for (j = i; j < size; j++) {
+        for (j = 0; j < size; j++) {
             if (matrix[i][j]) {
-                if (!matrix[i][i]) {
-                    printf("(%i,%i); ", elements[i], elements[i]);
-                }
-                for (w = j; w < size; w++) {
+                printf("(%i,%i); ", elements[i], elements[j]);
+                
+                for (w = 0; w < size; w++) {
                     if (matrix[j][w] && !matrix[i][w]) {
                         printf("(%i,%i); ", elements[i], elements[w]);
                     }
+                }
+
+                if (!matrix[i][i]) {
+                    printf("(%i,%i); ", elements[i], elements[i]);
+                    break;
                 }
             }
         }
@@ -205,4 +210,6 @@ main(void)
     } else {
         printf("F\n");
     }
+    printf("Fecho transitivo da relação: ");
+    print_transitive_closure(size, relation_matrix, elements);
 }
