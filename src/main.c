@@ -79,16 +79,36 @@ find_antisimetric_reason(int size, int matrix[size][size], int elements[size])
 }
 
 void
-find_transictive(int size, int matrix[size][size], int elements[size])
+find_transitive(int size, int matrix[size][size], int elements[size])
 {
     int i, j, w;
     for (i = 0; i < size; i++) {
         for (j = i; j < size; j++) {
-            if (matrix[i][j] && !matrix[i][i]) {
-                printf("(%i,%i); ", elements[i], elements[i]);
-            }
-            
             if (matrix[i][j]) {
+                if (!matrix[i][i]) {
+                    printf("(%i,%i); ", elements[i], elements[i]);
+                }
+                for (w = j; w < size; w++) {
+                    if (matrix[j][w] && !matrix[i][w]) {
+                        printf("(%i,%i); ", elements[i], elements[w]);
+                    }
+                }
+            }
+        }
+    }
+    printf("\n");
+}
+
+void
+print_transitive_closure(int size, int matrix[size][size], int elements[size])
+{
+    int i, j, w;
+    for (i = 0; i < size; i++) {
+        for (j = i; j < size; j++) {
+            if (matrix[i][j]) {
+                if (!matrix[i][i]) {
+                    printf("(%i,%i); ", elements[i], elements[i]);
+                }
                 for (w = j; w < size; w++) {
                     if (matrix[j][w] && !matrix[i][w]) {
                         printf("(%i,%i); ", elements[i], elements[w]);
@@ -167,11 +187,11 @@ main(void)
         printf("F\n");
     }
     printf("6. Transitiva: ");
-    if (is_transictive(size, relation_matrix)) {
+    if (is_transitive(size, relation_matrix)) {
         printf("V\n");
     } else {
         printf("F\n");
-        find_transictive(size, relation_matrix, elements);
+        find_transitive(size, relation_matrix, elements);
     }
     printf("Relação de equivalência: ");
     if (is_equivalence_relation(size, relation_matrix)) {
