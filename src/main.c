@@ -136,43 +136,53 @@ main(void)
     if (is_reflective(size, relation_matrix)) {
         printf("V\n");
     } else {
-        printf("F\n   ");
+        printf("F\n");
         complete_reflective_relation(size, relation_matrix, elements);
     }
     printf("2. Irreflexiva: ");
     if (is_unreflective(size, relation_matrix)) {
         printf("V\n");
     } else {
-        printf("F\n   ");
+        printf("F\n");
         find_unreflective_reason(size, relation_matrix, elements);
     }
     printf("3. Simétrica: ");
     if (is_simetric(size, relation_matrix)) {
         printf("V\n");
     } else {
-        printf("F\n   ");
+        printf("F\n");
         complete_simetric_relation(size, relation_matrix, elements);
     }
     printf("4. Anti-simétrica: ");
     if (is_antisimetric(size, relation_matrix)) {
         printf("V\n");
     } else {
-        printf("F\n   ");
+        printf("F\n");
         find_antisimetric_reason(size, relation_matrix, elements);
     }
     printf("5. Assimétrica: ");
     if (is_unsimetric(size, relation_matrix)) {
         printf("V\n");
-    } 
-    else {
+    } else {
         printf("F\n");
     }
     printf("6. Transitiva: ");
     if (is_transictive(size, relation_matrix)) {
         printf("V\n");
-    } 
-    else {
+    } else {
         printf("F\n");
         find_transictive(size, relation_matrix, elements);
+    }
+    printf("Relação de equivalência: ");
+    if (is_equivalence_relation(size, relation_matrix)) {
+        printf("V\n");
+    } else {
+        printf("F\n");
+    }
+    printf("Relação de ordem parcial: ");
+    if (is_parcial_order_relation(size, relation_matrix)) {
+        printf("V\n");
+    } else {
+        printf("F\n");
     }
 }

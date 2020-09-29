@@ -66,7 +66,7 @@ is_transictive(int size, int matrix[size][size])
             if (matrix[i][j] && !matrix[i][i]) {
                 return 0;
             }
-            
+
             if (matrix[i][j]) {
                 for (w = j; w < size; w++) {
                     if (matrix[j][w] && !matrix[i][w]) {
@@ -77,4 +77,28 @@ is_transictive(int size, int matrix[size][size])
         }
     }
     return 1;
+}
+
+int
+is_equivalence_relation(int size, int matrix[size][size])
+{
+    if (is_simetric(size, matrix)
+        && is_reflective(size, matrix)
+        && is_transictive(size, matrix)
+    ) {
+        return 1;
+    }
+    return 0;
+}
+
+int
+is_parcial_order_relation(int size, int matrix[size][size])
+{
+    if (is_antisimetric(size, matrix)
+        && is_reflective(size, matrix)
+        && is_transictive(size, matrix)
+    ) {
+        return 1;
+    }
+    return 0;
 }
