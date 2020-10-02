@@ -1,0 +1,11 @@
+## Contexto
+Este programa identifica, dado um conjunto de entradas, quais são as relações existentes nesse conjunto.
+
+
+## Como rodar
+Para rodar basta o MakeFile nos seguintes comandos:
+
+make binary_relations 
+make run 
+
+O primeiro comando compila o programa e o seguindo roda o executável. 
