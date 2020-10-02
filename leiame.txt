@@ -9,3 +9,6 @@ make binary_relations
 make run 
 
 O primeiro comando compila o programa e o seguindo roda o executável. 
+
+Obs.: O programa espera o fim de um arquivo para parar a execução e printar a resposta. Esse fim de arquivo é dado pela string EOF.
+Para rodar o programa sem um entrada de arquivo basta adicionar as entradas e adicionar na ultima linha e string EOF, e pressionar enter. 
